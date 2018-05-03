@@ -9,9 +9,10 @@ socket.on('disconnect', function() {
 });
 
 socket.on('newMessage', function(message) {
-    var node = document.createElement("li");
     var d = new Date(message.createdAt);
     var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    
+    var node = document.createElement("li");
     var textNode = document.createTextNode(time + " - " + message.from + " says: " + message.text);
     node.appendChild(textNode);
     document.getElementById("messages").appendChild(node);
