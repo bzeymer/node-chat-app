@@ -11,10 +11,15 @@ let io = socketIO(server);
 
 app.use(express.static(publicPath));
 
+let messages = [];
+
 io.on('connection', (socket) => {
     console.log('New user connected');
 
+    socket.emit('oldMessages', messages);
+
     socket.on('sendMessage', (message) => {
+        messages.push(message);
         io.emit('newMessage', message);
     })
 
