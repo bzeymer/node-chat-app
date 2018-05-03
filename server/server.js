@@ -14,17 +14,20 @@ app.use(express.static(publicPath));
 let messages = [];
 
 io.on('connection', (socket) => {
-    console.log('New user connected');
+
+    socket.emit('notify', `Welcome to Chatterson ${socket.handshake.query.name}`);
+    socket.broadcast.emit('notify', `${socket.handshake.query.name} has joined the room`);
 
     socket.emit('oldMessages', messages);
 
     socket.on('sendMessage', (message) => {
+        message.from = socket.handshake.query.name;
         messages.push(message);
-        io.emit('newMessage', message);
+        socket.broadcast.emit('newMessage', message);
     })
 
     socket.on('disconnect', () => {
-        console.log('User disconnected');
+        socket.broadcast.emit('notify', `${socket.handshake.query.name} has left the room`);
     })
 });
 

@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8" />
         <title>Chat</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <p>Welcome to Chat App</p>
         <form id="msgForm" onsubmit="return submitMessage()">
-            User: <input type="text" name="user"><br>
-            Message: <input type="text" name="message"><br>
+            <input class="message-input" type="text" name="message" placeholder="Enter your message">
             <input type="submit" name="Send">
         </form>
 
