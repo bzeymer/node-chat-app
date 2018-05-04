@@ -21,6 +21,7 @@ io.on('connection', (socket) => {
     socket.emit('oldMessages', messages);
 
     socket.on('sendMessage', (message) => {
+        console.log(message);
         message.from = socket.handshake.query.name;
         messages.push(message);
         socket.broadcast.emit('newMessage', message);

@@ -60,6 +60,7 @@ if (person) {
         var form = document.getElementById("msgForm");
         
         if (form.message.value) {
+            console.log(form);
             var message = {
                 text: form.message.value,
                 createdAt: new Date().getTime()
