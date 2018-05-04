@@ -1,7 +1,7 @@
 var person = prompt("Please enter your name");
 
 if (person) {
-    var socket = io("http://127.0.0.1:3000/", { query: "name="+person });
+    var socket = io({ query: "name="+person });
 
     socket.on('connect', function() {
         console.log('Connected to server');
@@ -60,12 +60,11 @@ if (person) {
         var form = document.getElementById("msgForm");
         
         if (form.message.value) {
-            console.log(form);
             var message = {
                 text: form.message.value,
                 createdAt: new Date().getTime()
             };
-
+            
             socket.emit('sendMessage', message);
 
             message.from = person;
