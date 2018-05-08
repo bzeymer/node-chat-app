@@ -61,6 +61,8 @@ if (person) {
         node.appendChild(textNode);
         node.appendChild(timeNode);
         document.getElementById("messages").appendChild(node);
+
+        scroll();
     }
 
     function appendLocationMessage(message) {
@@ -99,6 +101,8 @@ if (person) {
         node.appendChild(urlNode);
         node.appendChild(timeNode);
         document.getElementById("messages").appendChild(node);
+        
+        scroll();
     }
 
     function notification(message) {
@@ -107,6 +111,8 @@ if (person) {
         var textNode = document.createTextNode(message);
         node.appendChild(textNode);
         document.getElementById("messages").appendChild(node);
+        
+        scroll();
     }
 
     function submitMessage() {
@@ -139,5 +145,10 @@ if (person) {
         }, function(error) {
             alert('Unable to fetch location.');
         })
+    }
+
+    function scroll() {
+        var element = document.getElementsByClassName('chat');
+        element[0].scrollTop = element[0].scrollHeight - element[0].clientHeight;
     }
 }
