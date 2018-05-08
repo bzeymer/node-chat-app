@@ -3,17 +3,31 @@
     <head>
         <meta charset="utf-8" />
         <title>Chat</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <form id="msgForm" onsubmit="return submitMessage()">
-            <input class="message-input" type="text" name="message" placeholder="Enter your message">
-            <input type="submit" name="Send">
-        </form>
 
-        <ul id="messages">
-        </ul>
+        <div class="users">
+            Users connected
+        </div>
+
+        <div class="main">
+            <div class="chat">
+                <ul id="messages"></ul>
+            </div>
+            
+            <div class="commands">
+                <form id="msgForm">
+                    <input class="text-input" type="text" name="message" placeholder="Enter your message" autocomplete="off">
+                    <button name="Send" class="btn" onclick="return submitMessage()">Send</button>
+                </form>
+                
+                <button id="send-location" class="btn" onclick="return sendLocation()">Share Location</button>
+            </div>
+        </div>
+
         <script src="/socket.io/socket.io.js"></script>
         <script src="/js/index.js"></script>
     </body>

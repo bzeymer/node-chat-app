@@ -1,51 +1,171 @@
 body {
     font-family: "Roboto", sans-serif;
+    color: #263238;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    overflow: hidden;
+}
+
+.users {
+    width: 150px;
+    height: 100vh;
+    background-color: #607D8B;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.main {
+    height: 100vh;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #cfd8dc;
+}
+
+.chat {
+    font-size: 15px;
+    overflow-y: auto;
+    flex: 1;
+    margin: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li { 
+    min-height: 26px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3px;
+    border: 1px solid rgba(96, 125, 139, 0.2);
+    border-radius: 5px;
+    background-color: rgba(96, 125, 139, 0.2);
+}
+
+.user {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 26px;
+    min-width: 150px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    background-color: #607D8B;
+    padding: 0 10px;
+    align-self: flex-start;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-left: 13px solid #607D8B;
+    align-self: flex-start;
+}
+
+.text {
+    font-family: "Roboto", sans-serif;
+    flex: 1;
+    padding: 0 10px;
+}
+
+.location {
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    color: #263238;
+    font-style: italic;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    padding: 0 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.time {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 26px;
+    min-width: 65px;
+    font-style: italic;
+    color: #FFFFFF;
+    background-color: #607D8B;
+    padding: 0 10px;
+    align-self: flex-start;
+}
+
+.notification {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+}
+
+.commands {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    align-items: center;
 }
 
 form {
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
-.message-input {
-    flex: 1
-}
-
-ul {
-    list-style-type: none;
-    font-size: 15px;
-    margin: 0;
-    padding: 15px 0 0 5px;
-    color: rgba(0,0,0, 0.8);
-}
-
-li { 
-    display: flex;
-    flex-direction: row;
-}
-
-.time {
-    min-width: 96px;
-    font-style: italic;
-}
-
-.user {
-    font-weight: bold;
+.btn {
+    height: 36px;
+    font-family: "Roboto", sans-serif;
+    background-color: transparent;
+    margin-left: 5px;
+    color: #607D8B;
+    padding: 0px 12px;
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
     text-transform: uppercase;
+    outline: none;
+    line-height: 1;
 }
 
-/* .user::after {
-    font-weight: normal;
-    font-style: italic;
-    text-transform: none;
-    content: " says:";
-} */
+.btn:hover {
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 2px;
+}
 
-.user::after { 
-    font-weight: normal;
-    font-style: italic;
-    text-transform: none;
-    padding: 15px;
-    content: " - ";
+.btn:active {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+.text-input {
+    flex: 1;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
 }
