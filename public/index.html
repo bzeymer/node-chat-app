@@ -28,7 +28,32 @@
             </div>
         </div>
 
+        <script id="message-template" type="text/template">
+            <li>
+                <div class="user">{{from}}</div>
+                <div class="arrow"></div>
+                <div class="text">{{text}}</div>
+                <div class="time" title="{{title}}">{{time}}</div>
+            </li>
+        </script>
+
+        <script id="location-template" type="text/template">
+            <li>
+                <div class="user">{{from}}</div>
+                <div class="arrow"></div>
+                <a class="location" href="{{location}}" target="_blank">
+                    <i class="material-icons">place</i>
+                    Click to see my location
+                </a>
+                <div class="time" title="{{title}}">{{time}}</div>
+            </li>
+        </script>
+
         <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/libs/moment.js"></script>
+        <script src="/js/libs/pt-br.js"></script>
+        <script src="/js/libs/mustache.js"></script>
+        <script src="/js/libs/jquery-3.3.1.min.js"></script>
         <script src="/js/index.js"></script>
     </body>
 </html>

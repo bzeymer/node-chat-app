@@ -1,4 +1,5 @@
 var person = prompt("Please enter your name");
+const momentFormater = 'D [de] MMMM [de] YYYY [às] H:mm:ss';
 
 if (person) {
     var socket = io({ query: "name="+person });
@@ -35,76 +36,7 @@ if (person) {
         notification(message);
     });
 
-    function appendMessage(message) {
-        var d = new Date(message.createdAt);
-        var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-        
-        var node = document.createElement("li");
-        
-        var userNode = document.createElement("div");
-        userNode.className = "user";
-        userNode.appendChild(document.createTextNode(message.from));
-
-        var arrowNode = document.createElement("div");
-        arrowNode.className = "arrow";
-
-        var timeNode = document.createElement("div");
-        timeNode.className = "time";
-        timeNode.appendChild(document.createTextNode(time));
-
-        var textNode = document.createElement("div");
-        textNode.className = "text";
-        textNode.appendChild(document.createTextNode(message.text));
-
-        node.appendChild(userNode);
-        node.appendChild(arrowNode);
-        node.appendChild(textNode);
-        node.appendChild(timeNode);
-        document.getElementById("messages").appendChild(node);
-
-        scroll();
-    }
-
-    function appendLocationMessage(message) {
-        var d = new Date(message.createdAt);
-        var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-        
-        var node = document.createElement("li");
-
-        var userNode = document.createElement("div");
-        userNode.className = "user";
-        userNode.appendChild(document.createTextNode(message.from));
-
-        var arrowNode = document.createElement("div");
-        arrowNode.className = "arrow";
-
-        var urlNode = document.createElement("a");
-        urlNode.className = "location";
-        urlNode.href = message.url;
-        urlNode.target = "_blank";
-
-        var iconNode = document.createElement("i");
-        iconNode.className = "material-icons";
-        iconNode.href = message.url;
-        iconNode.target = "_blank";
-        iconNode.appendChild(document.createTextNode("place"));
-
-        urlNode.appendChild(iconNode);
-        urlNode.appendChild(document.createTextNode("Click to see my location"));
-        
-        var timeNode = document.createElement("div");
-        timeNode.className = "time";
-        timeNode.appendChild(document.createTextNode(time));
-
-        node.appendChild(userNode);
-        node.appendChild(arrowNode);
-        node.appendChild(urlNode);
-        node.appendChild(timeNode);
-        document.getElementById("messages").appendChild(node);
-        
-        scroll();
-    }
-
+    
     function notification(message) {
         var node = document.createElement("li");
         node.className = "notification";
@@ -151,4 +83,36 @@ if (person) {
         var element = document.getElementsByClassName('chat');
         element[0].scrollTop = element[0].scrollHeight - element[0].clientHeight;
     }
+
+    function appendMessage(message) {
+        var template = jQuery("#message-template").html();
+        var time = moment(message.createdAt);
+
+        var html = Mustache.render(template, {
+            from: message.from,
+            text: message.text,
+            time: time.fromNow(),
+            title: time.format(momentFormater)
+        });
+
+        jQuery("#messages").append(html);
+        scroll();
+    }
+
+    function appendLocationMessage(message) {
+
+        var template = jQuery("#location-template").html();
+        var time = moment(message.createdAt);
+
+        var html = Mustache.render(template, {
+            from: message.from,
+            location: message.url,
+            time: time.fromNow(),
+            title: time.format(momentFormater)
+        });
+
+        jQuery("#messages").append(html);        
+        scroll();
+    }
+
 }

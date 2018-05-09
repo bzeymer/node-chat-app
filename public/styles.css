@@ -82,7 +82,7 @@ li {
 
 .location {
     font-family: "Roboto", sans-serif;
-    font-size: 15px;
+    font-size: 12px;
     color: #263238;
     font-style: italic;
     display: flex;
@@ -98,11 +98,12 @@ a {
 
 .time {
     font-family: "Roboto", sans-serif;
+    font-size: 12px;
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 26px;
-    min-width: 65px;
+    min-width: 112px;
     font-style: italic;
     color: #FFFFFF;
     background-color: #607D8B;
