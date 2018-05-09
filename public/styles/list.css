@@ -1,0 +1,115 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li { 
+    min-height: 26px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3px;
+    border: 1px solid rgba(96, 125, 139, 0.2);
+    border-radius: 5px;
+    background-color: rgba(96, 125, 139, 0.2);
+    overflow: hidden;
+}
+
+.user {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 26px;
+    min-width: 150px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    background-color: #607D8B;
+    padding: 0 10px;
+    align-self: flex-start;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-left: 13px solid #607D8B;
+    align-self: flex-start;
+}
+
+.text {
+    font-family: "Roboto", sans-serif;
+    flex: 1;
+    padding: 0 10px;
+}
+
+.location {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    color: #263238;
+    font-style: italic;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    padding: 0 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.time {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 26px;
+    min-width: 112px;
+    font-style: italic;
+    color: #FFFFFF;
+    background-color: #607D8B;
+    padding: 0 10px;
+    align-self: flex-start;
+    text-align: center;
+}
+
+.notification {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+}
+
+@media only screen and (max-width: 425px) {
+    li {
+        flex-wrap: wrap;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    .users {
+        order: 1;
+        flex: 1;
+    }
+
+    .time {
+        order: 2;
+        flex: 1;
+        text-align: right;
+    }
+
+    .text, .location {
+        padding: 5px 10px;
+        order: 3;
+        min-width: 100%;
+    }
+}

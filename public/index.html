@@ -2,10 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width">
         <title>Chat</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="./main.css">
     </head>
     <body>
 
@@ -21,10 +22,16 @@
             <div class="commands">
                 <form id="msgForm">
                     <input class="text-input" type="text" name="message" placeholder="Enter your message" autocomplete="off">
-                    <button name="Send" class="btn" onclick="return submitMessage()">Send</button>
+                    <button name="Send" class="btn" onclick="return submitMessage()">
+                        <span>Send</span>
+                        <i class="material-icons">send</i>
+                    </button>
                 </form>
                 
-                <button id="send-location" class="btn" onclick="return sendLocation()">Share Location</button>
+                <button class="btn" onclick="return sendLocation()">
+                    <span>Share Location</span>
+                    <i class="material-icons">my_location</i>
+                </button>
             </div>
         </div>
 
