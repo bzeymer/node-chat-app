@@ -32,14 +32,20 @@ body {
     font-size: 15px;
     overflow-y: auto;
     flex: 1;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
+    margin-bottom: 50px;
 }
 
 .commands {
     display: flex;
     flex-direction: row;
-    margin: 3px 10px 10px 10px;
+    padding: 3px 10px 10px 10px;
     align-items: center;
+    background-color: #cfd8dc;
+    position: fixed;
+    bottom: 0;
+    left: 170px;
+    right: 0;
 }
 
 ::-webkit-scrollbar {
@@ -61,5 +67,10 @@ body {
 @media only screen and (max-width: 768px) {
     .users {
         display: none;
+    }
+
+    .commands {
+        left: 0;
+
     }
 }
