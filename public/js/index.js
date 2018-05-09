@@ -36,17 +36,6 @@ if (person) {
         notification(message);
     });
 
-    
-    function notification(message) {
-        var node = document.createElement("li");
-        node.className = "notification";
-        var textNode = document.createTextNode(message);
-        node.appendChild(textNode);
-        document.getElementById("messages").appendChild(node);
-        
-        scroll();
-    }
-
     function submitMessage() {
         var form = document.getElementById("msgForm");
         
@@ -80,8 +69,19 @@ if (person) {
     }
 
     function scroll() {
-        var element = document.getElementsByClassName('chat');
-        element[0].scrollTop = element[0].scrollHeight - element[0].clientHeight;
+        var chat = jQuery(".chat");
+        var newMessage = jQuery("#messages").children("li:last-child");
+
+        var clientHeight = chat.prop('clientHeight');
+        var scrollTop = chat.prop('scrollTop');
+        var scrollHeight = chat.prop('scrollHeight');
+        var newMessageHeight = newMessage.innerHeight();
+        var lastMessageHeight = newMessage.prev().innerHeight();
+        
+        if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
+            chat.scrollTop(scrollHeight - clientHeight);
+        }
+
     }
 
     function appendMessage(message) {
@@ -109,6 +109,19 @@ if (person) {
             location: message.url,
             time: time.fromNow(),
             title: time.format(momentFormater)
+        });
+
+        jQuery("#messages").append(html);        
+        scroll();
+    }
+
+    function notification(message) {
+
+        var template = jQuery("#notification-template").html();
+        var time = moment(message.createdAt);
+
+        var html = Mustache.render(template, {
+            text: message
         });
 
         jQuery("#messages").append(html);        
