@@ -26,7 +26,7 @@ li {
     min-width: 150px;
     font-weight: 500;
     text-transform: capitalize;
-    color: #FFFFFF;
+    color: rgba(255, 255, 255, 0.9);
     background-color: #607D8B;
     padding: 0 10px;
     align-self: flex-start;
@@ -72,7 +72,7 @@ a {
     height: 26px;
     min-width: 112px;
     font-style: italic;
-    color: #FFFFFF;
+    color: rgba(255, 255, 255, 0.9);
     background-color: #607D8B;
     padding: 0 10px;
     align-self: flex-start;

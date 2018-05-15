@@ -1,0 +1,74 @@
+.form-field {
+    width: 100%;    
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.unique-field {
+    margin: 0px 15px 0 0;    
+}
+
+input {
+    position: relative;
+    display: block;
+    width: calc(100% - 15px);
+    padding: 10px 10px 10px 5px;
+    border: none;
+    border-bottom:1px solid #757575;
+    background-color: transparent;
+    font-size: 13px;
+}
+
+input:focus {
+    outline: none;
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
+    color: #999; 
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all; 
+    -moz-transition: 0.2s ease all; 
+    -webkit-transition: 0.2s ease all;
+}
+  
+input:focus ~ label, input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #607D8B;
+}
+  
+.bar {
+    position: relative;
+    display: block;
+    width: calc(100% - 15px);
+    padding: 0 10px 0 5px;
+}
+.bar:before, .bar:after {
+    content: '';
+    height: 2px; 
+    width: 0;
+    bottom: 1px; 
+    position: absolute;
+    background: #607D8B; 
+    transition: 0.2s ease all; 
+    -moz-transition: 0.2s ease all; 
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%; 
+}
+
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+}

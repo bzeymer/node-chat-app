@@ -1,21 +1,27 @@
 const moment = require('moment');
 
-let generateMessage = (from, text) => {
+let generateMessage = (user, text) => {
     return {
-        from,
+        from: user.name,
+        room: user.room,
         text,
         createdAt: moment().valueOf(),
         type: "message"
     }
 };
 
-let generateLocationMessage = (from, lat, long) => {
+let generateLocationMessage = (user, lat, long) => {
     return {
-        from,
+        from: user.name,
+        room: user.room,
         url: `https://www.google.com.br/maps?q=${lat},${long}`,
         createdAt: moment().valueOf(),
         type: "location"
     }
 };
 
-module.exports = { generateMessage, generateLocationMessage };
+let getOldMessages = (messages, room) => {
+    return messages.filter((message) => message.room === room);
+}
+
+module.exports = { generateMessage, generateLocationMessage, getOldMessages };
