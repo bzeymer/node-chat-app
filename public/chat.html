@@ -21,7 +21,7 @@
             </div>
             
             <div class="commands">
-                <form id="msgForm">
+                <form id="msgForm" class="form msg-form">
                     <div class="form-field unique-field">
                         <input type="text" autofocus required autocomplete="off" placeholder="Enter your message" name="message">
                         <span class="bar"></span>
@@ -36,6 +36,31 @@
                     <span>Share Location</span>
                     <i class="material-icons">my_location</i>
                 </button>
+
+                <div id="diceForm" class="form dice-form">
+                    <div class="form-field unique-field mod-field">
+                        <input type="number" autocomplete="off" placeholder="Dice Mod" id="modifier">
+                        <span class="bar"></span>
+                    </div>
+                    <button class="btn" onclick="return rollDice(4)">
+                        <span>D4</span>
+                    </button>
+                    <button class="btn" onclick="return rollDice(6)">
+                        <span>D6</span>
+                    </button>
+                    <button class="btn" onclick="return rollDice(8)">
+                        <span>D8</span>
+                    </button>
+                    <button class="btn" onclick="return rollDice(10)">
+                        <span>D10</span>
+                    </button>
+                    <button class="btn" onclick="return rollDice(12)">
+                        <span>D12</span>
+                    </button>
+                    <button class="btn" onclick="return rollDice(20)">
+                        <span>D20</span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -44,6 +69,17 @@
                 <div class="user">{{from}}</div>
                 <div class="arrow"></div>
                 <div class="text">{{text}}</div>
+                <div class="time" title="{{title}}">{{time}}</div>
+            </li>
+        </script>
+
+        <script id="dice-template" type="text/template">
+            <li>
+                <div class="user">{{from}}</div>
+                <div class="arrow"></div>
+                <div class="text">
+                    Rolled {{result}} in a D{{dice}} + {{modifier}} <strong>Total: {{total}}</strong>
+                </div>
                 <div class="time" title="{{title}}">{{time}}</div>
             </li>
         </script>

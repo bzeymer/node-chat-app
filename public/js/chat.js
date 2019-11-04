@@ -44,6 +44,10 @@ socket.on('newLocationMessage', function(message) {
     appendLocationMessage(message);
 });
 
+socket.on('newDiceMessage', function(message) {
+    appendDiceMessage(message);
+});
+
 socket.on('notify', function(message) {
     notification(message);
 });
@@ -77,6 +81,18 @@ function sendLocation() {
         })
     }, function(error) {
         alert('Unable to fetch location.');
+    })
+}
+
+function rollDice(dice) {
+    var input = document.getElementById("modifier");
+    var modifier = +input.value;
+
+    var result = Math.floor( Math.random() * dice ) + 1;
+    socket.emit('rollDiceMessage', {
+        dice,
+        result,
+        modifier
     })
 }
 
@@ -119,6 +135,25 @@ function appendLocationMessage(message) {
     var html = Mustache.render(template, {
         from: message.from,
         location: message.url,
+        time: time.fromNow(),
+        title: time.format(momentFormater)
+    });
+
+    jQuery("#messages").append(html);        
+    scroll();
+}
+
+function appendDiceMessage(message) {
+
+    var template = jQuery("#dice-template").html();
+    var time = moment(message.createdAt);
+
+    var html = Mustache.render(template, {
+        from: message.from,
+        dice: message.dice,
+        modifier: message.modifier,
+        result: message.result,
+        total: message.result + message.modifier,
         time: time.fromNow(),
         title: time.format(momentFormater)
     });

@@ -20,8 +20,20 @@ let generateLocationMessage = (user, lat, long) => {
     }
 };
 
+let generateRollDiceMessage = (user, { result, dice, modifier }) => {
+    return {
+        from: user.name,
+        room: user.room,
+        dice: dice,
+        modifier: modifier,
+        result: result,
+        createdAt: moment().valueOf(),
+        type: "message"
+    }
+};
+
 let getOldMessages = (messages, room) => {
     return messages.filter((message) => message.room === room);
 }
 
-module.exports = { generateMessage, generateLocationMessage, getOldMessages };
+module.exports = { generateMessage, generateLocationMessage, getOldMessages, generateRollDiceMessage };

@@ -70,11 +70,18 @@ body {
     right: 0;
 }
 
-form {
-    width: 100%;
+.form {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.msg-form {
+    flex: 1;
+}
+
+.dice-form {
+    margin-left: 100px;
 }
 
 ::-webkit-scrollbar {

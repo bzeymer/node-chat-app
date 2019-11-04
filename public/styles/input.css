@@ -8,6 +8,10 @@
     margin: 0px 15px 0 0;    
 }
 
+.mod-field {
+    width: 100px !important;
+}
+
 input {
     position: relative;
     display: block;

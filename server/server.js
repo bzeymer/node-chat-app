@@ -3,7 +3,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
 
-const { generateMessage, generateLocationMessage, getOldMessages } = require('./utils/message');
+const { generateMessage, generateLocationMessage, getOldMessages, generateRollDiceMessage } = require('./utils/message');
 const { isRealString } = require('./utils/validation');
 const { Users } = require('./utils/users');
 
@@ -54,6 +54,13 @@ io.on('connection', (socket) => {
         let message = generateLocationMessage(user, coords.latitude, coords.longitude);
         messages.push(message);
         io.to(user.room).emit('newLocationMessage', message);
+    })
+
+    socket.on('rollDiceMessage', (event) => {
+        let user = users.getUser(socket.id);
+        let message = generateRollDiceMessage(user, event);
+        messages.push(message);
+        io.to(user.room).emit('newDiceMessage', message);
     })
 
     socket.on('disconnect', () => {
