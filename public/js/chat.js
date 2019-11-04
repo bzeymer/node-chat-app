@@ -30,6 +30,8 @@ socket.on('oldMessages', function(messages) {
             appendMessage(message);
         } else if (message.type === 'location') {
             appendLocationMessage(message);
+        } else if (message.type === 'dice') {
+            appendDiceMessage(message);
         } else {
             return;
         }

@@ -28,7 +28,7 @@ let generateRollDiceMessage = (user, { result, dice, modifier }) => {
         modifier: modifier,
         result: result,
         createdAt: moment().valueOf(),
-        type: "message"
+        type: "dice"
     }
 };
 
